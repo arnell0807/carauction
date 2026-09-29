@@ -47,7 +47,7 @@ export default function CreateAuctionPage() {
     },
   });
 
-  const mutation = useMutation({
+  const createAuctionMutation = useMutation({
     mutationFn: createAuction,
     onSuccess: (auction) => {
       queryClient.invalidateQueries({ queryKey: ["auctions"] });
@@ -57,7 +57,7 @@ export default function CreateAuctionPage() {
   });
 
   function onSubmit(values: AuctionFormValues) {
-    mutation.mutate(values);
+    createAuctionMutation.mutate(values);
   }
 
   return (
@@ -391,19 +391,19 @@ export default function CreateAuctionPage() {
           </div>
         </section>
 
-        {mutation.isError && (
+        {createAuctionMutation.isError && (
           <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700">
-            {mutation.error.message}
+            {createAuctionMutation.error.message}
           </div>
         )}
 
         <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
           <button
             type="submit"
-            disabled={mutation.isPending}
+            disabled={createAuctionMutation.isPending}
             className="rounded-xl bg-stone-950 px-6 py-3.5 font-black text-white transition hover:bg-stone-800 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {mutation.isPending ? "Creating auction..." : "Create auction"}
+            {createAuctionMutation.isPending ? "Creating auction..." : "Create auction"}
           </button>
         </div>
       </form>
