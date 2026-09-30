@@ -1,6 +1,15 @@
+import { getDemoAuctions } from "./demoAuctions";
+import { isOffline, setOffline } from "./demoMode";
 import { getSupabase } from "./supabase";
 
 export const MIN_BID_INCREMENT = 250;
+
+// A paused Supabase project can hang instead of failing, so give up quickly
+// and fall back to demo data.
+const READ_TIMEOUT_MS = 8_000;
+
+const OFFLINE_MESSAGE =
+  "The demo database is offline right now, so bidding and listing are paused.";
 
 export type Bid = {
   id: string;
@@ -68,31 +77,60 @@ function slugify(value: string) {
     .replace(/(^-|-$)/g, "");
 }
 
+async function withDemoFallback<T>(
+  read: () => Promise<T>,
+  fallback: () => T,
+): Promise<T> {
+  try {
+    const result = await read();
+    setOffline(false);
+    return result;
+  } catch (error) {
+    console.warn("Supabase unavailable, showing demo data", error);
+    setOffline(true);
+    return fallback();
+  }
+}
+
 export async function getAuctions() {
-  const { data, error } = await getSupabase()
-    .from("auctions")
-    .select(AUCTION_COLUMNS)
-    .order("ends_at", { ascending: true });
+  return withDemoFallback(
+    async () => {
+      const { data, error } = await getSupabase()
+        .from("auctions")
+        .select(AUCTION_COLUMNS)
+        .order("ends_at", { ascending: true })
+        .abortSignal(AbortSignal.timeout(READ_TIMEOUT_MS));
 
-  if (error) throw new Error(error.message);
+      if (error) throw new Error(error.message);
 
-  return data as AuctionSummary[];
+      return data as AuctionSummary[];
+    },
+    (): AuctionSummary[] => getDemoAuctions(),
+  );
 }
 
 export async function getAuction(id: string) {
-  const { data, error } = await getSupabase()
-    .from("auctions")
-    .select(`${AUCTION_COLUMNS}, bids (id, amount, bidder, at)`)
-    .eq("id", id)
-    .order("at", { referencedTable: "bids", ascending: false })
-    .maybeSingle();
+  return withDemoFallback(
+    async () => {
+      const { data, error } = await getSupabase()
+        .from("auctions")
+        .select(`${AUCTION_COLUMNS}, bids (id, amount, bidder, at)`)
+        .eq("id", id)
+        .order("at", { referencedTable: "bids", ascending: false })
+        .abortSignal(AbortSignal.timeout(READ_TIMEOUT_MS))
+        .maybeSingle();
 
-  if (error) throw new Error(error.message);
+      if (error) throw new Error(error.message);
 
-  return data as Auction | null;
+      return data as Auction | null;
+    },
+    () => getDemoAuctions().find((auction) => auction.id === id) ?? null,
+  );
 }
 
 export async function createAuction(values: AuctionFormValues) {
+  if (isOffline()) throw new Error(OFFLINE_MESSAGE);
+
   const { data, error } = await getSupabase()
     .from("auctions")
     .insert({
@@ -132,6 +170,8 @@ export async function placeBid(values: {
   amount: number;
   bidder: string;
 }) {
+  if (isOffline()) throw new Error(OFFLINE_MESSAGE);
+
   const { error } = await getSupabase().rpc("place_bid", {
     p_auction_id: values.auctionId,
     p_amount: values.amount,

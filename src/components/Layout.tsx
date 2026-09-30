@@ -1,10 +1,21 @@
 import { Outlet, Link } from "react-router-dom";
 import Header from "./Header";
+import { useOffline } from "../lib/demoMode";
 
 export default function Layout() {
+  const offline = useOffline();
+
   return (
     <div className="min-h-screen bg-[#f5f5f4] text-stone-950">
       <Header />
+      {offline && (
+        <div className="border-b border-amber-200 bg-amber-50">
+          <p className="mx-auto max-w-7xl px-4 py-3 text-sm font-semibold text-amber-900 sm:px-6 lg:px-8">
+            The demo database is offline, so you're seeing sample listings.
+            Bidding and selling are paused.
+          </p>
+        </div>
+      )}
       <main>
         <Outlet />
       </main>
