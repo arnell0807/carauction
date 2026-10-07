@@ -88,3 +88,16 @@ end;
 $$;
 
 grant execute on function public.place_bid(text, integer, text) to anon, authenticated;
+
+-- Written to twice a week by .github/workflows/keep-supabase-alive.yml so the
+-- free-plan project doesn't get paused for inactivity.
+create table if not exists public.keep_alive (
+  id bigint generated always as identity primary key,
+  pinged_at timestamptz not null default now()
+);
+
+alter table public.keep_alive enable row level security;
+
+drop policy if exists "anon insert pings" on public.keep_alive;
+create policy "anon insert pings" on public.keep_alive
+  for insert to anon with check (true);
