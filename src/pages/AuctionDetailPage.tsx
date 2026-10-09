@@ -74,7 +74,7 @@ export default function AuctionDetailPage() {
   if (isLoading) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="h-155 animate-pulse rounded-3xl bg-stone-200" />
+        <div className="h-155 animate-pulse rounded-xl bg-stone-200" />
       </div>
     );
   }
@@ -91,7 +91,7 @@ export default function AuctionDetailPage() {
         <button
           type="button"
           onClick={() => refetch()}
-          className="mt-6 rounded-xl bg-stone-950 px-5 py-3 text-sm font-black text-white transition hover:bg-stone-800"
+          className="mt-6 rounded-lg bg-stone-950 px-5 py-3 text-sm font-black text-white transition hover:bg-stone-800"
         >
           Try again
         </button>
@@ -123,7 +123,7 @@ export default function AuctionDetailPage() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-700">
+          <p className="text-xs font-bold uppercase tracking-wider text-amber-700">
             {auction.location} · {auction.sellerType}
           </p>
 
@@ -140,7 +140,7 @@ export default function AuctionDetailPage() {
         <button
           type="button"
           onClick={() => dispatch(toggleWatchlist(auction.id))}
-          className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-black transition ${
+          className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-black transition ${
             watched
               ? "border-amber-300 bg-amber-300 text-stone-950"
               : "border-stone-300 bg-white text-stone-700 hover:border-stone-500"
@@ -151,7 +151,7 @@ export default function AuctionDetailPage() {
         </button>
       </div>
 
-      <div className="overflow-hidden rounded-3xl bg-stone-200">
+      <div className="overflow-hidden rounded-xl bg-stone-200">
         <img
           src={auction.image}
           alt={`${auction.year} ${auction.make} ${auction.model}`}
@@ -161,7 +161,7 @@ export default function AuctionDetailPage() {
 
       <div className="mt-7 grid gap-7 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="space-y-7">
-          <section className="rounded-3xl border border-stone-200 bg-white p-6 sm:p-8">
+          <section className="rounded-xl border border-stone-200 bg-white p-6 sm:p-8">
             <h2 className="text-2xl font-black tracking-tight">
               About this car
             </h2>
@@ -174,7 +174,7 @@ export default function AuctionDetailPage() {
               {auction.highlights.map((highlight) => (
                 <div
                   key={highlight}
-                  className="rounded-xl bg-stone-100 px-4 py-3 text-sm font-bold text-stone-700"
+                  className="rounded-lg bg-stone-100 px-4 py-3 text-sm font-bold text-stone-700"
                 >
                   {highlight}
                 </div>
@@ -182,10 +182,10 @@ export default function AuctionDetailPage() {
             </div>
           </section>
 
-          <section className="rounded-3xl border border-stone-200 bg-white p-6 sm:p-8">
+          <section className="rounded-xl border border-stone-200 bg-white p-6 sm:p-8">
             <div className="flex items-end justify-between gap-4">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-stone-400">
+                <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
                   History
                 </p>
 
@@ -229,10 +229,10 @@ export default function AuctionDetailPage() {
         </div>
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-3xl bg-stone-950 p-6 text-white shadow-xl">
+          <div className="rounded-xl bg-stone-950 p-6 text-white shadow-xl">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-stone-400">
+                <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
                   Current bid
                 </p>
 
@@ -242,7 +242,7 @@ export default function AuctionDetailPage() {
               </div>
 
               {!auction.reserve && (
-                <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-black text-emerald-300">
+                <span className="rounded-md bg-emerald-400/15 px-3 py-1 text-xs font-black text-emerald-300">
                   No reserve
                 </span>
               )}
@@ -269,7 +269,7 @@ export default function AuctionDetailPage() {
             </div>
 
             {ended ? (
-              <p className="mt-5 rounded-xl bg-stone-900 px-4 py-3.5 text-center font-black text-stone-300">
+              <p className="mt-5 rounded-lg bg-stone-900 px-4 py-3.5 text-center font-black text-stone-300">
                 Auction ended ·{" "}
                 {auction.bidCount > 0
                   ? `final bid ${formatMoney(auction.currentBid)}`
@@ -295,7 +295,7 @@ export default function AuctionDetailPage() {
                       message: "Use at least 2 characters",
                     },
                   })}
-                  className="mt-1.5 h-11 w-full rounded-xl border border-stone-700 bg-stone-900 px-3 text-white outline-none placeholder:text-stone-500 focus:border-amber-300"
+                  className="mt-1.5 h-11 w-full rounded-lg border border-stone-700 bg-stone-900 px-3 text-white outline-none placeholder:text-stone-500 focus:border-amber-300"
                 />
 
                 {errors.bidder && (
@@ -329,7 +329,7 @@ export default function AuctionDetailPage() {
                         value >= minimumBid ||
                         `Minimum bid is ${formatMoney(minimumBid)}`,
                     })}
-                    className="h-12 w-full rounded-xl border border-stone-700 bg-stone-900 pl-8 pr-3 text-lg font-black text-white outline-none focus:border-amber-300"
+                    className="h-12 w-full rounded-lg border border-stone-700 bg-stone-900 pl-8 pr-3 text-lg font-black text-white outline-none focus:border-amber-300"
                   />
                 </div>
 
@@ -341,13 +341,13 @@ export default function AuctionDetailPage() {
               </div>
 
               {bidMutation.isError && (
-                <p className="rounded-xl bg-red-500/10 px-3 py-2 text-sm font-semibold text-red-300">
+                <p className="rounded-lg bg-red-500/10 px-3 py-2 text-sm font-semibold text-red-300">
                   {bidMutation.error.message}
                 </p>
               )}
 
               {bidMutation.isSuccess && (
-                <p className="rounded-xl bg-emerald-500/10 px-3 py-2 text-sm font-semibold text-emerald-300">
+                <p className="rounded-lg bg-emerald-500/10 px-3 py-2 text-sm font-semibold text-emerald-300">
                   Bid placed. You’re currently highest.
                 </p>
               )}
@@ -355,7 +355,7 @@ export default function AuctionDetailPage() {
               <button
                 type="submit"
                 disabled={bidMutation.isPending}
-                className="w-full rounded-xl bg-amber-300 px-4 py-3.5 font-black text-stone-950 transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-lg bg-amber-300 px-4 py-3.5 font-black text-stone-950 transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {bidMutation.isPending
                   ? "Placing bid..."
@@ -365,8 +365,8 @@ export default function AuctionDetailPage() {
             )}
           </div>
 
-          <div className="mt-4 rounded-2xl border border-stone-200 bg-white p-5">
-            <p className="text-xs font-black uppercase tracking-[0.15em] text-stone-400">
+          <div className="mt-4 rounded-lg border border-stone-200 bg-white p-5">
+            <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
               Seller
             </p>
 

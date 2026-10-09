@@ -17,21 +17,20 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-stone-200 bg-stone-950 text-white">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{  
-            backgroundImage:
-              "radial-gradient(circle at 70% 20%, #f59e0b 0, transparent 28%), radial-gradient(circle at 20% 80%, #57534e 0, transparent 25%)",
-          }}
+        <img
+          src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=2000&q=80"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
         />
+        <div className="absolute inset-0 bg-linear-to-r from-stone-950 via-stone-950/85 to-stone-950/30" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
           <div className="max-w-3xl">
-            <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-amber-300">
+            <p className="mb-5 text-xs font-bold uppercase tracking-wider text-amber-300">
               Enthusiast car auctions
             </p>
 
-            <h1 className="text-5xl font-black tracking-[-0.055em] sm:text-6xl lg:text-7xl">
+            <h1 className="text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
               Cars worth bidding for.
             </h1>
 
@@ -43,14 +42,14 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/auctions"
-                className="inline-flex items-center gap-2 rounded-xl bg-amber-300 px-5 py-3 font-black text-stone-950 transition hover:bg-amber-200"
+                className="inline-flex items-center gap-2 rounded-lg bg-amber-300 px-5 py-3 font-black text-stone-950 transition hover:bg-amber-200"
               >
                 Browse auctions <ArrowIcon />
               </Link>
 
               <Link
                 to="/sell"
-                className="rounded-xl border border-stone-700 px-5 py-3 font-bold text-white transition hover:border-stone-500 hover:bg-stone-900"
+                className="rounded-lg border border-stone-700 px-5 py-3 font-bold text-white transition hover:border-stone-500 hover:bg-stone-900"
               >
                 List your car
               </Link>
@@ -62,11 +61,11 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="mb-7 flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-700">
+            <p className="text-xs font-bold uppercase tracking-wider text-amber-700">
               Ending soon
             </p>
 
-            <h2 className="mt-1 text-3xl font-black tracking-[-0.04em]">
+            <h2 className="mt-1 text-3xl font-black tracking-tight">
               Auctions to watch
             </h2>
           </div>
@@ -80,7 +79,7 @@ export default function HomePage() {
         </div>
 
         {isError ? (
-          <div className="rounded-2xl border border-red-200 bg-red-50 p-5 font-semibold text-red-800">
+          <div className="rounded-lg border border-red-200 bg-red-50 p-5 font-semibold text-red-800">
             Couldn't load auctions
           </div>
         ) : isLoading ? (
@@ -95,13 +94,13 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-4 rounded-3xl bg-amber-300 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div className="grid gap-4 rounded-xl bg-amber-300 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-900">
+            <p className="text-xs font-bold uppercase tracking-wider text-amber-900">
               Have something interesting?
             </p>
 
-            <h2 className="mt-2 text-3xl font-black tracking-[-0.04em] text-stone-950">
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-stone-950">
               Create an auction in a couple of minutes.
             </h2>
 
@@ -113,7 +112,7 @@ export default function HomePage() {
 
           <Link
             to="/sell"
-            className="mt-3 rounded-xl bg-stone-950 px-5 py-3 text-center font-black text-white transition hover:bg-stone-800 lg:mt-0"
+            className="mt-3 rounded-lg bg-stone-950 px-5 py-3 text-center font-black text-white transition hover:bg-stone-800 lg:mt-0"
           >
             Start a listing
           </Link>

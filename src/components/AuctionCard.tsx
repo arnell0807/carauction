@@ -15,7 +15,7 @@ export default function AuctionCard({ auction }: { auction: AuctionSummary }) {
   );
 
   return (
-    <article className="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+    <article className="group overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm transition hover:shadow-md">
       <div className="relative aspect-16/10 overflow-hidden bg-stone-200">
         <Link
           to={`/auctions/${auction.id}`}
@@ -31,7 +31,7 @@ export default function AuctionCard({ auction }: { auction: AuctionSummary }) {
         <button
           type="button"
           onClick={() => dispatch(toggleWatchlist(auction.id))}
-          className={`absolute right-3 top-3 grid size-10 place-items-center rounded-full border backdrop-blur transition ${
+          className={`absolute right-3 top-3 grid size-10 place-items-center rounded-md border backdrop-blur transition ${
             watched
               ? "border-amber-300 bg-amber-300 text-stone-950"
               : "border-white/50 bg-black/40 text-white hover:bg-black/60"
@@ -41,7 +41,7 @@ export default function AuctionCard({ auction }: { auction: AuctionSummary }) {
           <HeartIcon filled={watched} />
         </button>
 
-        <div className="absolute bottom-3 left-3 rounded-full bg-black/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
+        <div className="absolute bottom-3 left-3 rounded-md bg-black/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
           <Countdown endsAt={auction.endsAt} /> left
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function AuctionCard({ auction }: { auction: AuctionSummary }) {
       <div className="p-5">
         <div className="mb-1 flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-stone-500">
+            <p className="text-xs font-bold uppercase tracking-wider text-stone-500">
               {auction.year} · {auction.location}
             </p>
 
@@ -62,7 +62,7 @@ export default function AuctionCard({ auction }: { auction: AuctionSummary }) {
           </div>
 
           {!auction.reserve && (
-            <span className="shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-700">
+            <span className="shrink-0 rounded-md bg-emerald-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-700">
               No reserve
             </span>
           )}

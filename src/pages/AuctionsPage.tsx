@@ -59,13 +59,13 @@ export default function AuctionsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-7">
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-700">
+        <p className="text-xs font-bold uppercase tracking-wider text-amber-700">
           Marketplace
         </p>
 
         <div className="mt-1 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 className="text-4xl font-black tracking-[-0.045em]">
+            <h1 className="text-4xl font-black tracking-tight">
               Live auctions
             </h1>
 
@@ -85,13 +85,13 @@ export default function AuctionsPage() {
       <FilterBar makes={makes} />
 
       {isError ? (
-        <div className="mt-8 rounded-2xl border border-red-200 bg-red-50 p-5 font-semibold text-red-800">
+        <div className="mt-8 rounded-lg border border-red-200 bg-red-50 p-5 font-semibold text-red-800">
           Couldn't load auctions
         </div>
       ) : isLoading ? (
         <LoadingCards count={6} />
       ) : visible.length === 0 ? (
-        <div className="mt-7 rounded-3xl border border-dashed border-stone-300 bg-white px-6 py-16 text-center">
+        <div className="mt-7 rounded-xl border border-dashed border-stone-300 bg-white px-6 py-16 text-center">
           <h2 className="text-xl font-black">No auctions match that.</h2>
 
           <p className="mt-2 text-stone-500">

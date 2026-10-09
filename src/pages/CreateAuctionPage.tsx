@@ -20,7 +20,7 @@ function validateEndDate(value: string) {
 }
 
 const fieldClass =
-  "mt-1.5 h-11 w-full rounded-xl border border-stone-200 bg-white px-3 text-sm font-semibold text-stone-900 outline-none transition placeholder:font-normal placeholder:text-stone-400 focus:border-stone-500 focus:ring-4 focus:ring-stone-100";
+  "mt-1.5 h-11 w-full rounded-lg border border-stone-200 bg-white px-3 text-sm font-semibold text-stone-900 outline-none transition placeholder:font-normal placeholder:text-stone-400 focus:border-stone-500 focus:ring-4 focus:ring-stone-100";
 const labelClass = "text-sm font-black text-stone-800";
 const errorClass = "mt-1 text-xs font-semibold text-red-600";
 
@@ -63,19 +63,19 @@ export default function CreateAuctionPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="max-w-2xl">
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-700">
+        <p className="text-xs font-bold uppercase tracking-wider text-amber-700">
           Create listing
         </p>
 
-        <h1 className="mt-1 text-4xl font-black tracking-[-0.045em]">
+        <h1 className="mt-1 text-4xl font-black tracking-tight">
           Sell your car
         </h1>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
-        <section className="rounded-3xl border border-stone-200 bg-white p-6 sm:p-8">
+        <section className="rounded-xl border border-stone-200 bg-white p-6 sm:p-8">
           <div className="mb-6">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-stone-400">
+            <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
               01
             </p>
 
@@ -215,9 +215,9 @@ export default function CreateAuctionPage() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-stone-200 bg-white p-6 sm:p-8">
+        <section className="rounded-xl border border-stone-200 bg-white p-6 sm:p-8">
           <div className="mb-6">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-stone-400">
+            <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
               02
             </p>
 
@@ -309,9 +309,9 @@ export default function CreateAuctionPage() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-stone-200 bg-white p-6 sm:p-8">
+        <section className="rounded-xl border border-stone-200 bg-white p-6 sm:p-8">
           <div className="mb-6">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-stone-400">
+            <p className="text-xs font-bold uppercase tracking-wider text-stone-400">
               03
             </p>
 
@@ -346,7 +346,7 @@ export default function CreateAuctionPage() {
               <textarea
                 rows={6}
                 placeholder="Describe the car honestly: condition, ownership, history, modifications, faults…"
-                className="mt-1.5 w-full rounded-xl border border-stone-200 bg-white px-3 py-3 text-sm leading-6 outline-none transition placeholder:text-stone-400 focus:border-stone-500 focus:ring-4 focus:ring-stone-100"
+                className="mt-1.5 w-full rounded-lg border border-stone-200 bg-white px-3 py-3 text-sm leading-6 outline-none transition placeholder:text-stone-400 focus:border-stone-500 focus:ring-4 focus:ring-stone-100"
                 {...register("description", {
                   required: "Description is required",
                   minLength: {
@@ -375,7 +375,7 @@ export default function CreateAuctionPage() {
               <textarea
                 rows={5}
                 placeholder={"Full service history\nTwo keys\nNew tyres"}
-                className="mt-1.5 w-full rounded-xl border border-stone-200 bg-white px-3 py-3 text-sm leading-6 outline-none transition placeholder:text-stone-400 focus:border-stone-500 focus:ring-4 focus:ring-stone-100"
+                className="mt-1.5 w-full rounded-lg border border-stone-200 bg-white px-3 py-3 text-sm leading-6 outline-none transition placeholder:text-stone-400 focus:border-stone-500 focus:ring-4 focus:ring-stone-100"
                 {...register("highlights", {
                   required: "Add at least one highlight",
                   validate: (value) =>
@@ -392,7 +392,7 @@ export default function CreateAuctionPage() {
         </section>
 
         {createAuctionMutation.isError && (
-          <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700">
+          <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700">
             {createAuctionMutation.error.message}
           </div>
         )}
@@ -401,7 +401,7 @@ export default function CreateAuctionPage() {
           <button
             type="submit"
             disabled={createAuctionMutation.isPending}
-            className="rounded-xl bg-stone-950 px-6 py-3.5 font-black text-white transition hover:bg-stone-800 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-lg bg-stone-950 px-6 py-3.5 font-black text-white transition hover:bg-stone-800 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {createAuctionMutation.isPending ? "Creating auction..." : "Create auction"}
           </button>
