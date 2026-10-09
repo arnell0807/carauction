@@ -16,7 +16,7 @@ export default function Header() {
       <NavLink to="/watchlist" className={navClass}>
         Watchlist
         {watchCount > 0 && (
-          <span className="ml-1 rounded-full bg-stone-200 px-2 py-0.5 text-xs text-stone-700">
+          <span className="ml-1 rounded-md bg-stone-200 px-2 py-0.5 text-xs text-stone-700">
             {watchCount}
           </span>
         )}
@@ -32,10 +32,10 @@ export default function Header() {
           className="flex items-center gap-2.5"
           aria-label="RevBid home"
         >
-          <span className="grid size-9 place-items-center rounded-xl bg-stone-950 text-sm font-black text-amber-300">
+          <span className="grid size-9 place-items-center rounded-lg bg-stone-950 text-sm font-black text-amber-300">
             R
           </span>
-          <span className="text-xl font-black tracking-[-0.04em] text-stone-950">
+          <span className="text-xl font-black tracking-tight text-stone-950">
             RevBid
           </span>
         </Link>
@@ -44,7 +44,7 @@ export default function Header() {
 
         <Link
           to="/sell"
-          className="rounded-xl bg-stone-950 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-stone-800"
+          className="rounded-lg bg-stone-950 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-stone-800"
         >
           Sell a car
         </Link>

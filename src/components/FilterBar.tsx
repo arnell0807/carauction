@@ -14,10 +14,10 @@ export default function FilterBar({ makes }: { makes: string[] }) {
   const filters = useAppSelector((state) => state.filters);
 
   const selectClass =
-    "h-11 rounded-xl border border-stone-200 bg-white px-3 text-sm font-semibold text-stone-700 outline-none transition focus:border-stone-500";
+    "h-11 rounded-lg border border-stone-200 bg-white px-3 text-sm font-semibold text-stone-700 outline-none transition focus:border-stone-500";
 
   return (
-    <div className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm">
+    <div className="rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
       <div className="grid gap-3 lg:grid-cols-[minmax(230px,1.5fr)_repeat(4,minmax(130px,1fr))_auto]">
         <label className="relative">
           <span className="sr-only">Search auctions</span>
@@ -26,7 +26,7 @@ export default function FilterBar({ makes }: { makes: string[] }) {
             value={filters.search}
             onChange={(e) => dispatch(setSearch(e.target.value))}
             placeholder="Search make or model"
-            className="h-11 w-full rounded-xl border border-stone-200 bg-white pl-9 pr-3 text-sm outline-none transition placeholder:text-stone-400 focus:border-stone-500"
+            className="h-11 w-full rounded-lg border border-stone-200 bg-white pl-9 pr-3 text-sm outline-none transition placeholder:text-stone-400 focus:border-stone-500"
           />
         </label>
 
@@ -78,7 +78,7 @@ export default function FilterBar({ makes }: { makes: string[] }) {
         <button
           type="button"
           onClick={() => dispatch(resetFilters())}
-          className="h-11 rounded-xl px-4 text-sm font-bold text-stone-500 transition hover:bg-stone-100 hover:text-stone-950"
+          className="h-11 rounded-lg px-4 text-sm font-bold text-stone-500 transition hover:bg-stone-100 hover:text-stone-950"
         >
           Reset
         </button>
