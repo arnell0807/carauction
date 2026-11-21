@@ -30,7 +30,7 @@ const DEMO_AUCTIONS: DemoAuction[] = [
     sellerType: "Dealer",
     endsInMinutes: 4530,
     image:
-      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1624467828290-c72ffbdc4ddc?auto=format&fit=crop&w=1600&q=85",
     description:
       "A sharp, driver-focused 992 GT3 with documented service history, front-axle lift and a clean interior.",
     highlights: [
@@ -61,7 +61,7 @@ const DEMO_AUCTIONS: DemoAuction[] = [
     sellerType: "Private",
     endsInMinutes: 3120,
     image:
-      "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1753077728949-320daac60fea?auto=format&fit=crop&w=1600&q=85",
     description:
       "Well-specced M3 Competition with tasteful factory options and no-reserve bidding.",
     highlights: [
@@ -91,7 +91,7 @@ const DEMO_AUCTIONS: DemoAuction[] = [
     sellerType: "Dealer",
     endsInMinutes: 5880,
     image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1741905358565-5ae6835ac172?auto=format&fit=crop&w=1600&q=85",
     description:
       "Low-mileage Defender 110 with practical options, strong specification and remaining manufacturer warranty.",
     highlights: ["D300 diesel", "Panoramic roof", "Tow pack", "360° camera"],
@@ -113,7 +113,7 @@ const DEMO_AUCTIONS: DemoAuction[] = [
     sellerType: "Dealer",
     endsInMinutes: 7395,
     image:
-      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1721907360880-e5c7462a9ac2?auto=format&fit=crop&w=1600&q=85",
     description:
       "Classic fastback presented as a usable weekend car, with a manual gearbox and recent mechanical refresh.",
     highlights: [
@@ -143,7 +143,7 @@ const DEMO_AUCTIONS: DemoAuction[] = [
     sellerType: "Private",
     endsInMinutes: 1710,
     image:
-      "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1572811298797-9eecadf6cb24?auto=format&fit=crop&w=1600&q=85",
     description:
       "A clean daily-driver Golf R with sensible mileage and no-reserve bidding.",
     highlights: ["No reserve", "DSG", "Digital cockpit", "Apple CarPlay"],
@@ -168,7 +168,7 @@ const DEMO_AUCTIONS: DemoAuction[] = [
     sellerType: "Dealer",
     endsInMinutes: 8820,
     image:
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1616875491585-8e2464195d5f?auto=format&fit=crop&w=1600&q=85",
     description:
       "V8-powered C63 S with a strong options list and recent service.",
     highlights: [
