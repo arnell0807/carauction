@@ -35,8 +35,8 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-300">
-              Browse interesting cars, follow the ones you care about, and place
-              bids in a marketplace built around the auction itself.
+              Browse cars for sale, add them to your watchlist and place bids
+              before the timer runs out.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

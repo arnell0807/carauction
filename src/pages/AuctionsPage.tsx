@@ -70,7 +70,7 @@ export default function AuctionsPage() {
             </h1>
 
             <p className="mt-2 text-stone-500">
-              Find the car, follow the auction, make your move.
+              All cars currently up for auction.
             </p>
           </div>
 
