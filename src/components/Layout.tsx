@@ -22,7 +22,7 @@ export default function Layout() {
       <footer className="mt-20 border-t border-stone-200 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-8 text-sm text-stone-500 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
           <p>
-            <span className="font-black text-stone-900">RevBid</span> — car
+            <span className="font-bold text-stone-900">RevBid</span> · car
             auction marketplace.
           </p>
           <div className="flex gap-5 font-semibold">

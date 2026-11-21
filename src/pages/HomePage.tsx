@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import AuctionCard from "../components/AuctionCard";
-import { ArrowIcon } from "../components/Icons";
 import LoadingCards from "../components/LoadingCards";
 import { sortByEndingSoon } from "../lib/sortAuctions";
 import { hasEnded } from "../lib/auctionApi";
@@ -26,12 +25,9 @@ export default function HomePage() {
 
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
           <div className="max-w-3xl">
-            <p className="mb-5 text-xs font-bold uppercase tracking-wider text-amber-300">
-              Enthusiast car auctions
-            </p>
 
-            <h1 className="text-5xl font-black tracking-tight sm:text-6xl lg:text-7xl">
-              Cars worth bidding for.
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Enthusiast car auctions
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-300">
@@ -42,9 +38,9 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/auctions"
-                className="inline-flex items-center gap-2 rounded-lg bg-amber-300 px-5 py-3 font-black text-stone-950 transition hover:bg-amber-200"
+                className="inline-flex items-center gap-2 rounded-lg bg-amber-300 px-5 py-3 font-bold text-stone-950 transition hover:bg-amber-200"
               >
-                Browse auctions <ArrowIcon />
+                Browse auctions
               </Link>
 
               <Link
@@ -61,20 +57,17 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="mb-7 flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-amber-700">
-              Ending soon
-            </p>
 
-            <h2 className="mt-1 text-3xl font-black tracking-tight">
+            <h2 className="mt-1 text-3xl font-bold tracking-tight">
               Auctions to watch
             </h2>
           </div>
 
           <Link
             to="/auctions"
-            className="hidden items-center gap-2 text-sm font-black text-stone-700 hover:text-stone-950 sm:flex"
+            className="hidden items-center gap-2 text-sm font-bold text-stone-700 hover:text-stone-950 sm:flex"
           >
-            View all <ArrowIcon className="size-4" />
+            View all
           </Link>
         </div>
 
@@ -94,17 +87,14 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-4 rounded-xl bg-amber-300 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div className="grid gap-4 rounded-xl border border-stone-200 bg-white p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-amber-900">
-              Have something interesting?
-            </p>
 
-            <h2 className="mt-2 text-3xl font-black tracking-tight text-stone-950">
-              Create an auction in a couple of minutes.
+            <h2 className="text-2xl font-bold tracking-tight text-stone-950">
+              Selling a car?
             </h2>
 
-            <p className="mt-2 max-w-2xl text-stone-700">
+            <p className="mt-2 max-w-2xl text-stone-600">
               Add the details, set a starting bid and your listing goes live
               straight away.
             </p>
@@ -112,7 +102,7 @@ export default function HomePage() {
 
           <Link
             to="/sell"
-            className="mt-3 rounded-lg bg-stone-950 px-5 py-3 text-center font-black text-white transition hover:bg-stone-800 lg:mt-0"
+            className="mt-3 rounded-lg bg-stone-950 px-5 py-3 text-center font-bold text-white transition hover:bg-stone-800 lg:mt-0"
           >
             Start a listing
           </Link>

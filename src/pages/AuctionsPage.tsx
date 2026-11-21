@@ -59,13 +59,10 @@ export default function AuctionsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-7">
-        <p className="text-xs font-bold uppercase tracking-wider text-amber-700">
-          Marketplace
-        </p>
 
         <div className="mt-1 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 className="text-4xl font-black tracking-tight">
+            <h1 className="text-4xl font-bold tracking-tight">
               Live auctions
             </h1>
 
@@ -92,7 +89,7 @@ export default function AuctionsPage() {
         <LoadingCards count={6} />
       ) : visible.length === 0 ? (
         <div className="mt-7 rounded-xl border border-dashed border-stone-300 bg-white px-6 py-16 text-center">
-          <h2 className="text-xl font-black">No auctions match that.</h2>
+          <h2 className="text-xl font-bold">No auctions match that.</h2>
 
           <p className="mt-2 text-stone-500">
             Try clearing a filter or searching for something broader.

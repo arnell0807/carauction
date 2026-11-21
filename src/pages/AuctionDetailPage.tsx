@@ -82,7 +82,7 @@ export default function AuctionDetailPage() {
   if (isError) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-24 text-center">
-        <h1 className="text-3xl font-black">Couldn't load this auction.</h1>
+        <h1 className="text-3xl font-bold">Couldn't load this auction.</h1>
 
         <p className="mt-3 text-stone-500">
           Check your connection and try again.
@@ -91,7 +91,7 @@ export default function AuctionDetailPage() {
         <button
           type="button"
           onClick={() => refetch()}
-          className="mt-6 rounded-lg bg-stone-950 px-5 py-3 text-sm font-black text-white transition hover:bg-stone-800"
+          className="mt-6 rounded-lg bg-stone-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-stone-800"
         >
           Try again
         </button>
@@ -102,7 +102,7 @@ export default function AuctionDetailPage() {
   if (!auction) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-24 text-center">
-        <h1 className="text-3xl font-black">Auction not found.</h1>
+        <h1 className="text-3xl font-bold">Auction not found.</h1>
 
         <Link
           to="/auctions"
@@ -123,11 +123,11 @@ export default function AuctionDetailPage() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-bold uppercase tracking-wider text-amber-700">
+          <p className="text-sm text-stone-500">
             {auction.location} · {auction.sellerType}
           </p>
 
-          <h1 className="mt-1 text-4xl font-black tracking-tighter sm:text-5xl">
+          <h1 className="mt-1 text-4xl font-bold tracking-tight sm:text-5xl">
             {auction.year} {auction.make} {auction.model}
           </h1>
 
@@ -140,7 +140,7 @@ export default function AuctionDetailPage() {
         <button
           type="button"
           onClick={() => dispatch(toggleWatchlist(auction.id))}
-          className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-black transition ${
+          className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-bold transition ${
             watched
               ? "border-amber-300 bg-amber-300 text-stone-950"
               : "border-stone-300 bg-white text-stone-700 hover:border-stone-500"
@@ -162,7 +162,7 @@ export default function AuctionDetailPage() {
       <div className="mt-7 grid gap-7 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="space-y-7">
           <section className="rounded-xl border border-stone-200 bg-white p-6 sm:p-8">
-            <h2 className="text-2xl font-black tracking-tight">
+            <h2 className="text-2xl font-bold tracking-tight">
               About this car
             </h2>
 
@@ -189,13 +189,13 @@ export default function AuctionDetailPage() {
                   History
                 </p>
 
-                <h2 className="mt-1 text-2xl font-black tracking-tight">
+                <h2 className="mt-1 text-2xl font-bold tracking-tight">
                   Bid activity
                 </h2>
               </div>
 
               <p className="text-sm font-bold text-stone-500">
-                {auction.bidCount} bids
+                {auction.bidCount} {auction.bidCount === 1 ? "bid" : "bids"}
               </p>
             </div>
 
@@ -211,14 +211,14 @@ export default function AuctionDetailPage() {
                     className="flex items-center justify-between gap-4 py-4"
                   >
                     <div>
-                      <p className="font-black text-stone-900">{bid.bidder}</p>
+                      <p className="font-bold text-stone-900">{bid.bidder}</p>
 
                       <p className="mt-0.5 text-xs font-medium text-stone-400">
                         {formatDateTime(bid.at)}
                       </p>
                     </div>
 
-                    <p className="font-black tabular-nums">
+                    <p className="font-bold tabular-nums">
                       {formatMoney(bid.amount)}
                     </p>
                   </div>
@@ -236,13 +236,13 @@ export default function AuctionDetailPage() {
                   Current bid
                 </p>
 
-                <p className="mt-1 text-4xl font-black tracking-tight">
+                <p className="mt-1 text-4xl font-bold tracking-tight">
                   {formatMoney(auction.currentBid)}
                 </p>
               </div>
 
               {!auction.reserve && (
-                <span className="rounded-md bg-emerald-400/15 px-3 py-1 text-xs font-black text-emerald-300">
+                <span className="rounded-md bg-emerald-400/15 px-3 py-1 text-xs font-bold text-emerald-300">
                   No reserve
                 </span>
               )}
@@ -254,7 +254,7 @@ export default function AuctionDetailPage() {
                   Time left
                 </p>
 
-                <p className="mt-1 text-lg font-black">
+                <p className="mt-1 text-lg font-bold">
                   <Countdown endsAt={auction.endsAt} />
                 </p>
               </div>
@@ -269,7 +269,7 @@ export default function AuctionDetailPage() {
             </div>
 
             {ended ? (
-              <p className="mt-5 rounded-lg bg-stone-900 px-4 py-3.5 text-center font-black text-stone-300">
+              <p className="mt-5 rounded-lg bg-stone-900 px-4 py-3.5 text-center font-bold text-stone-300">
                 Auction ended ·{" "}
                 {auction.bidCount > 0
                   ? `final bid ${formatMoney(auction.currentBid)}`
@@ -329,7 +329,7 @@ export default function AuctionDetailPage() {
                         value >= minimumBid ||
                         `Minimum bid is ${formatMoney(minimumBid)}`,
                     })}
-                    className="h-12 w-full rounded-lg border border-stone-700 bg-stone-900 pl-8 pr-3 text-lg font-black text-white outline-none focus:border-amber-300"
+                    className="h-12 w-full rounded-lg border border-stone-700 bg-stone-900 pl-8 pr-3 text-lg font-bold text-white outline-none focus:border-amber-300"
                   />
                 </div>
 
@@ -355,7 +355,7 @@ export default function AuctionDetailPage() {
               <button
                 type="submit"
                 disabled={bidMutation.isPending}
-                className="w-full rounded-lg bg-amber-300 px-4 py-3.5 font-black text-stone-950 transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-lg bg-amber-300 px-4 py-3.5 font-bold text-stone-950 transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {bidMutation.isPending
                   ? "Placing bid..."
@@ -370,7 +370,7 @@ export default function AuctionDetailPage() {
               Seller
             </p>
 
-            <p className="mt-1 font-black">{auction.seller}</p>
+            <p className="mt-1 font-bold">{auction.seller}</p>
 
             <p className="text-sm text-stone-500">
               {auction.sellerType} · {auction.location}

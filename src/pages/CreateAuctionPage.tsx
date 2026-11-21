@@ -21,7 +21,7 @@ function validateEndDate(value: string) {
 
 const fieldClass =
   "mt-1.5 h-11 w-full rounded-lg border border-stone-200 bg-white px-3 text-sm font-semibold text-stone-900 outline-none transition placeholder:font-normal placeholder:text-stone-400 focus:border-stone-500 focus:ring-4 focus:ring-stone-100";
-const labelClass = "text-sm font-black text-stone-800";
+const labelClass = "text-sm font-bold text-stone-800";
 const errorClass = "mt-1 text-xs font-semibold text-red-600";
 
 function FieldError({ error }: { error?: RHFFieldError }) {
@@ -63,11 +63,8 @@ export default function CreateAuctionPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="max-w-2xl">
-        <p className="text-xs font-bold uppercase tracking-wider text-amber-700">
-          Create listing
-        </p>
 
-        <h1 className="mt-1 text-4xl font-black tracking-tight">
+        <h1 className="mt-1 text-4xl font-bold tracking-tight">
           Sell your car
         </h1>
       </div>
@@ -79,7 +76,7 @@ export default function CreateAuctionPage() {
               01
             </p>
 
-            <h2 className="mt-1 text-2xl font-black tracking-tight">
+            <h2 className="mt-1 text-2xl font-bold tracking-tight">
               Vehicle
             </h2>
           </div>
@@ -221,7 +218,7 @@ export default function CreateAuctionPage() {
               02
             </p>
 
-            <h2 className="mt-1 text-2xl font-black tracking-tight">
+            <h2 className="mt-1 text-2xl font-bold tracking-tight">
               Auction setup
             </h2>
           </div>
@@ -315,7 +312,7 @@ export default function CreateAuctionPage() {
               03
             </p>
 
-            <h2 className="mt-1 text-2xl font-black tracking-tight">
+            <h2 className="mt-1 text-2xl font-bold tracking-tight">
               Presentation
             </h2>
           </div>
@@ -401,7 +398,7 @@ export default function CreateAuctionPage() {
           <button
             type="submit"
             disabled={createAuctionMutation.isPending}
-            className="rounded-lg bg-stone-950 px-6 py-3.5 font-black text-white transition hover:bg-stone-800 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-lg bg-stone-950 px-6 py-3.5 font-bold text-white transition hover:bg-stone-800 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {createAuctionMutation.isPending ? "Creating auction..." : "Create auction"}
           </button>

@@ -55,7 +55,7 @@ export default function AuctionCard({ auction }: { auction: AuctionSummary }) {
 
             <Link
               to={`/auctions/${auction.id}`}
-              className="mt-1 block text-xl font-black tracking-tight text-stone-950 hover:underline"
+              className="mt-1 block text-xl font-bold tracking-tight text-stone-950 hover:underline"
             >
               {auction.make} {auction.model}
             </Link>
@@ -76,13 +76,13 @@ export default function AuctionCard({ auction }: { auction: AuctionSummary }) {
         <div className="mt-5 flex items-end justify-between border-t border-stone-100 pt-4">
           <div>
             <p className="text-xs font-medium text-stone-500">Current bid</p>
-            <p className="text-2xl font-black tracking-tight text-stone-950">
+            <p className="text-2xl font-bold tracking-tight text-stone-950">
               {formatMoney(auction.currentBid)}
             </p>
           </div>
 
           <p className="text-sm font-semibold text-stone-500">
-            {auction.bidCount} bids
+            {auction.bidCount} {auction.bidCount === 1 ? "bid" : "bids"}
           </p>
         </div>
       </div>

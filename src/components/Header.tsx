@@ -32,10 +32,10 @@ export default function Header() {
           className="flex items-center gap-2.5"
           aria-label="RevBid home"
         >
-          <span className="grid size-9 place-items-center rounded-lg bg-stone-950 text-sm font-black text-amber-300">
+          <span className="grid size-9 place-items-center rounded-lg bg-stone-950 text-sm font-bold text-amber-300">
             R
           </span>
-          <span className="text-xl font-black tracking-tight text-stone-950">
+          <span className="text-xl font-bold tracking-tight text-stone-950">
             RevBid
           </span>
         </Link>
