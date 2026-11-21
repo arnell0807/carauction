@@ -89,7 +89,7 @@ $$;
 
 grant execute on function public.place_bid(text, integer, text) to anon, authenticated;
 
--- Written to twice a week by .github/workflows/keep-supabase-alive.yml so the
+-- Written to every 4 hours by .github/workflows/keep-supabase-alive.yml so the
 -- free-plan project doesn't get paused for inactivity.
 create table if not exists public.keep_alive (
   id bigint generated always as identity primary key,
@@ -101,3 +101,43 @@ alter table public.keep_alive enable row level security;
 drop policy if exists "anon insert pings" on public.keep_alive;
 create policy "anon insert pings" on public.keep_alive
   for insert to anon with check (true);
+
+-- Keeps the demo listings live: once a seed auction ends it gets a new end date
+-- a few days out, and its bids move forward so the latest one was a few hours ago.
+-- Runs hourly with pg_cron.
+create extension if not exists pg_cron;
+
+create or replace function public.roll_over_demo_auctions()
+returns void
+language plpgsql
+set search_path = public
+as $$
+declare
+  r record;
+  n integer := 0;
+  last_bid timestamptz;
+begin
+  for r in
+    select id from public.auctions
+    where id in ('golf-r-2020','m3-competition-2021','911-gt3-2022',
+                 'defender-110-2023','mustang-gt-1967','c63-s-2019')
+      and ends_at <= now()
+    order by ends_at
+  loop
+    n := n + 1;
+    select max(at) into last_bid from public.bids where auction_id = r.id;
+    if last_bid is not null then
+      update public.bids
+      set at = at + ((now() - make_interval(hours => n + 1)) - last_bid)
+      where auction_id = r.id;
+    end if;
+    update public.auctions
+    set ends_at = now() + make_interval(days => n, hours => (n * 5) % 12)
+    where id = r.id;
+  end loop;
+end;
+$$;
+
+revoke execute on function public.roll_over_demo_auctions() from public, anon, authenticated;
+
+select cron.schedule('roll-over-demo-auctions', '0 * * * *', 'select public.roll_over_demo_auctions()');

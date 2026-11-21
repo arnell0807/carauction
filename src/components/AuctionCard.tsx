@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { toggleWatchlist } from "../features/watchlist/watchlistSlice";
 import { formatMileage, formatMoney } from "../lib/format";
-import type { AuctionSummary } from "../lib/auctionApi";
+import { hasEnded, type AuctionSummary } from "../lib/auctionApi";
 import Countdown from "./Countdown";
 import { HeartIcon } from "./Icons";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
@@ -42,7 +42,8 @@ export default function AuctionCard({ auction }: { auction: AuctionSummary }) {
         </button>
 
         <div className="absolute bottom-3 left-3 rounded-md bg-black/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
-          <Countdown endsAt={auction.endsAt} /> left
+          <Countdown endsAt={auction.endsAt} />
+          {!hasEnded(auction) && " left"}
         </div>
       </div>
 
